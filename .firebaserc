@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "default": "techacks-1bb30",
+    "staging": "techacks-1bb30"
+  },
+  "targets": {}
+}

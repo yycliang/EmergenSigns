@@ -38,6 +38,15 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <style>
+      .portfolio .portfolio-item .portfolio-info{
+            position: relative !important;
+            left: 0px !important;
+      }
+      .show {
+        display: block;
+        }
+  </style>
 </head>
 
 <body>
@@ -54,9 +63,9 @@
         <ul>
                 <li class = "logged-in"><a class="nav-link scrollto" href="index.html">Home</a></li>
                 <li class = "logged-out"><a class="nav-link scrollto" href="index.html">Home</a></li>
-                <li class = "logged-out"><a class="nav-link scrollto" href="login.html">Sign Up</a></li>
+                <li class = "logged-out"><a class="nav-link scrollto" href="login.html">Login</a></li>
                 <li class = "logged-out"><a class="nav-link scrollto active" href="gestures.html">Gestures List</a></li>
-                <li class = "logged-in"><a class="nav-link scrollto" href="gestures.html">Gestures List</a></li>
+                <li class = "logged-in"><a class="nav-link scrollto active" href="gestures.html">Gestures List</a></li>
                 <li class = "logged-in"><a class="nav-link scrollto" href="profile.html">Profile</a></li>
                 <li class = "logged-in"><a class="nav-link scrollto" href="learning.html">Learning</a></li>
                 <li class = "logged-in"><a class="nav-link scrollto" href = "index.html" onclick="logout()">Log Out</a></li>
@@ -73,140 +82,64 @@
     <section id="breadcrumbs" class="breadcrumbs">
       <div class="container">
 
-        <ol>
-          <li><a href="index.html">Home</a></li>
-          <li>Portfolio Details</li>
-        </ol>
-        <h2>Portfolio Details</h2>
-
       </div>
     </section><!-- End Breadcrumbs -->
 
-    <!-- ======= Portfolio Details Section ======= -->
-    <section id="portfolio-details" class="portfolio-details">
+     <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio">
       <div class="container">
 
-        <div class="row gy-4">
-
-          <div class="col-lg-8">
-            <div class="portfolio-details-slider swiper-container">
-              <div class="swiper-wrapper align-items-center">
-
-                <div class="swiper-slide">
-                  <img src="assets/img/portfolio/portfolio-1.jpg" alt="">
-                </div>
-
-                <div class="swiper-slide">
-                  <img src="assets/img/portfolio/portfolio-2.jpg" alt="">
-                </div>
-
-                <div class="swiper-slide">
-                  <img src="assets/img/portfolio/portfolio-3.jpg" alt="">
-                </div>
-
-              </div>
-              <div class="swiper-pagination"></div>
-            </div>
-          </div>
-
-          <div class="col-lg-4">
-            <div class="portfolio-info">
-              <h3>Project information</h3>
-              <ul>
-                <li><strong>Category</strong>: Web design</li>
-                <li><strong>Client</strong>: ASU Company</li>
-                <li><strong>Project date</strong>: 01 March, 2020</li>
-                <li><strong>Project URL</strong>: <a href="#">www.example.com</a></li>
-              </ul>
-            </div>
-            <div class="portfolio-description">
-              <h2>This is an example of portfolio detail</h2>
-              <p>
-                Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
-              </p>
-            </div>
-          </div>
-
+        <div class="section-title">
+          <h2>Gestures List</h2>
+          <p>Click on a gesture below to learn about it. </p>
         </div>
 
+        <ul id="portfolio-flters" class="d-flex justify-content-center">
+          <li onclick="filterSelection('all')" class="filter-active btn">All</li>
+          <li onclick="filterSelection('alphabet')" class="btn" >Alphabet</li>
+          <li onclick="filterSelection('emergency')" class="btn" >Emergency</li>
+        </ul>
+
+        <div class="row portfolio-container" id="letterGestures">        
+        </div>
+
+        <!-- <div class="row portfolio-container" id="emergencyGestures">
+          <div class="col-lg-4 col-md-6 portfolio-item emergency">
+            <a href="learning.html" class="details-link">
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/gpNDuOwyW7Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="portfolio-info">
+                    <h4>Emergency Sign: Yes</h4>
+                </div>
+            </a>
+          </div>
+        </div> -->
+
       </div>
-    </section><!-- End Portfolio Details Section -->
+    </section><!-- End Portfolio Section -->
 
   </main><!-- End #main -->
 
-  <!-- ======= Footer ======= -->
   <footer id="footer">
-
-    <div class="footer-newsletter">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-6">
-            <h4>Join Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <div class="footer-top">
       <div class="container">
         <div class="row">
-
-          <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>Arsha</h3>
-            <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
-            </p>
+          <div class="col-lg-6 col-md-6 footer-contact">
+            <h3>EmergenSigns</h3>
           </div>
-
-          <div class="col-lg-3 col-md-6 footer-links">
+          <div class="col-lg-6 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="index.html">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="gestures.html">Gestures</a></li>
             </ul>
           </div>
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Services</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Social Networks</h4>
-            <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
-            <div class="social-links mt-3">
-              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-            </div>
-          </div>
-
         </div>
       </div>
     </div>
 
     <div class="container footer-bottom clearfix">
       <div class="copyright">
-        &copy; Copyright <strong><span>Arsha</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>EmergenSigns</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->

@@ -2,34 +2,34 @@
 // For TM template code
 
 // Video
+// const completeButton = document.getElementById("completeLetter");
 let video;
 let classifier;
-let label = 'waiting...'
+let label = 'waiting...';
 let imageModelURL = 'https://teachablemachine.withgoogle.com/models/_8wOFtP0j/';
+let dataBob;
 
 // STEP 1: Load the model!
 function preload() {
   classifier = ml5.imageClassifier(imageModelURL + 'model.json');
   
 }
-const urlParams = new URLSearchParams(window.location.search);
-const gestureId = urlParams.get('gestureId');
+const urlParams2 = new URLSearchParams(window.location.search);
+const gestureId2 = urlParams2.get('gestureId');
 
-function fetchDataFromTopicID() {
-    if (gestureId) {
-        const topicsRef = firebase.database().ref(`gestures/${gestureId}`);
+function fetchBobFromTopicID() {
+    if (gestureId2) {
+        const topicsRef = firebase.database().ref(`gestures/${gestureId2}`);
         topicsRef.on('value', (snapshot) => {
-            const data = snapshot.val();
-            titleReplace.innerHTML = data.title;
-            imgReplace.innerHTML+= `<img src=${data.src} class="img-fluid" alt=""></img>`
+            dataBob = snapshot.val();
             
         });
     }
 }
-// window.addEventListener("DOMContentLoaded", function (ev) {
-//     console.log("DOMContentLoaded event");
-//     fetchDataFromTopicID()
-// });
+window.addEventListener("DOMContentLoaded", function (ev) {
+    console.log("DOMContentLoaded event");
+    fetchBobFromTopicID()
+});
 function setup() {
   let canvas = createCanvas(640, 480);
   canvas.parent('sketch-container');
@@ -67,7 +67,11 @@ function gotResults(error, results) {
     console.error(error);
     return;
   }
-  label = results[0].label;
+  if (results[0].label == dataBob.title.toLowerCase()){
+    const completeButton = document.getElementById("completeLetter");
+    label = '✅';
+    completeButton.innerHTML = `<a class="btn btn-primary" id="${gestureId2}" onClick="saveTopic()">FINISH!</a>`;
+  }
   classifyVideo();
   
   

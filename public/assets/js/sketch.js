@@ -12,6 +12,24 @@ function preload() {
   classifier = ml5.imageClassifier(imageModelURL + 'model.json');
   
 }
+const urlParams = new URLSearchParams(window.location.search);
+const gestureId = urlParams.get('gestureId');
+
+function fetchDataFromTopicID() {
+    if (gestureId) {
+        const topicsRef = firebase.database().ref(`gestures/${gestureId}`);
+        topicsRef.on('value', (snapshot) => {
+            const data = snapshot.val();
+            titleReplace.innerHTML = data.title;
+            imgReplace.innerHTML+= `<img src=${data.src} class="img-fluid" alt=""></img>`
+            
+        });
+    }
+}
+// window.addEventListener("DOMContentLoaded", function (ev) {
+//     console.log("DOMContentLoaded event");
+//     fetchDataFromTopicID()
+// });
 function setup() {
   let canvas = createCanvas(640, 480);
   canvas.parent('sketch-container');

@@ -7,6 +7,12 @@ window.onload = (event) => {
         const googleUserId = user.uid;
         setUpUI(user);
         getGestures(user.uid);
+        document.querySelector("#name").innerHTML = user.displayName;
+      console.log("name stuff")
+      document.querySelector("#imagestuff").innerHTML= `<img alt="..." width="130" class="rounded mb-2 img-thumbnail" src=${user.photoURL}></img>`
+    //   document.querySelector("#userDropdown").innerHTML+=`<img class="img-profile rounded-circle" src="${user.photoURL}">`;
+    //   document.querySelector("#dash").innerHTML+=`<img class="img-radius" alt="User-Profile-Image" src="${user.photoURL}">`;
+      document.querySelector("#email").innerHTML = user.email;
         } else {
             setUpUI();
         // If not logged in, navigate back to login page.
@@ -32,7 +38,6 @@ window.onload = (event) => {
             const note = data[noteItem];
             // console.log(note.title)
             cards += createCard(noteItem, note);
-            console.log(cards);
         }
         document.querySelector("#letterGestures").innerHTML = cards;
     };
@@ -53,9 +58,8 @@ window.onload = (event) => {
     //         </div>;`
     // };
     const createCard = (noteId, note) => {
-        console.log(note.title)
         return `<div class="col-lg-3 col-md-6 portfolio-item alphabet">
-                    <a href="learning.html" class="details-link">
+                    <a href="learning.html?gestureId=${noteId}" class="details-link">
                         <div class="portfolio-img"><img src=${note.src} class="img-fluid"></div>
                         <div class="portfolio-info">
                             <h4>Letter: ${note.title}</h4>

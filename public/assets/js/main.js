@@ -33,7 +33,7 @@
     }
   }
 
-  /**
+  /*
    * Easy on scroll event listener 
    */
   const onscroll = (el, listener) => {

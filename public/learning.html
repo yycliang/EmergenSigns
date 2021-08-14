@@ -24,7 +24,11 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
+<script defer src="/__/firebase/8.3.1/firebase.js"></script>
+   <!-- include only the Firebase features as you need -->
+   <script defer src="/__/firebase/8.3.1/firebase-database.js"></script>
+   <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+  <!-- Template Main CSS File -->
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
@@ -48,31 +52,15 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto " href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link   scrollto" href="#portfolio">Portfolio</a></li>
-          <li><a class="nav-link scrollto" href="#team">Team</a></li>
-          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
+                <li class = "logged-in"><a class="nav-link scrollto active" href="index.html">Home</a></li>
+                <li class = "logged-out"><a class="nav-link scrollto active" href="index.html">Home</a></li>
+                <li class = "logged-out"><a class="nav-link scrollto" href="login.html">Sign Up</a></li>
+                <li class = "logged-out"><a class="nav-link scrollto" href="gestures.html">Gestures List</a></li>
+                <li class = "logged-in"><a class="nav-link scrollto" href="gestures.html">Gestures List</a></li>
+                <li class = "logged-in"><a class="nav-link scrollto" href="profile.html">Profile</a></li>
+                <li class = "logged-in"><a class="nav-link scrollto" href="learning.html">Learning</a></li>
+                <li class = "logged-in"><a class="nav-link scrollto" href = "index.html" onclick="logout()">Log Out</a></li>
             </ul>
-          </li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
-        </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
@@ -215,8 +203,9 @@
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
 
   <!-- Template Main JS File -->
+  <script src="assets/js/index.js"></script>
   <script src="assets/js/main.js"></script>
-
+<script src="assets/js/logout.js"></script>
 </body>
 
 </html>

@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Inner Page - Arsha Bootstrap Template</title>
+  <title>Sign Up</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -27,7 +27,10 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-
+  <script defer src="/__/firebase/8.3.1/firebase.js"></script>
+   <!-- include only the Firebase features as you need -->
+   <script defer src="/__/firebase/8.3.1/firebase-database.js"></script>
+   <script defer src="/__/firebase/init.js?useEmulator=true"></script>
   <!-- =======================================================
   * Template Name: Arsha - v4.3.0
   * Template URL: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/
@@ -42,37 +45,21 @@
   <header id="header" class="fixed-top header-inner-pages">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="index.html">Arsha</a></h1>
+      <h1 class="logo me-auto"><a href="index.html">EmergenSigns</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto " href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link   scrollto" href="#portfolio">Portfolio</a></li>
-          <li><a class="nav-link scrollto" href="#team">Team</a></li>
-          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
+                <li class = "logged-in"><a class="nav-link scrollto active" href="index.html">Home</a></li>
+                <li class = "logged-out"><a class="nav-link scrollto active" href="index.html">Home</a></li>
+                <li class = "logged-out"><a class="nav-link scrollto" href="login.html">Sign Up</a></li>
+                <li class = "logged-out"><a class="nav-link scrollto" href="gestures.html">Gestures List</a></li>
+                <li class = "logged-in"><a class="nav-link scrollto" href="gestures.html">Gestures List</a></li>
+                <li class = "logged-in"><a class="nav-link scrollto" href="profile.html">Profile</a></li>
+                <li class = "logged-in"><a class="nav-link scrollto" href="learning.html">Learning</a></li>
+                <li class = "logged-in"><a class="nav-link scrollto" href = "index.html" onclick="logout()">Log Out</a></li>
             </ul>
-          </li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
-        </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
@@ -87,18 +74,30 @@
 
         <ol>
           <li><a href="index.html">Home</a></li>
-          <li>Inner Page</li>
+          <li>Sign Up</li>
         </ol>
-        <h2>Inner Page</h2>
+        <h2>Sign Up</h2>
 
       </div>
     </section><!-- End Breadcrumbs -->
 
     <section class="inner-page">
       <div class="container">
-        <p>
-          Example inner page template
-        </p>
+        <div class="row">
+            <div class = "col-4"></div>
+            <div class = "col-4">
+                <div class="card text-center">
+                    <img class="card-img-top" src="data:image/jpeg;base64,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" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Log In</h5>
+                        <p class="card-text">Sign in below to get started with your EmergenSigns journey!</p>
+                        <a class="btn btn-primary" id = "customBtn" onclick = signIn()>Sign In with Google</a>
+                    </div>
+                </div>
+            </div>
+            <div class = "col-4"></div>
+        </div>
+        
       </div>
     </section>
 
@@ -201,8 +200,11 @@
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
 
   <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
 
+  <script src="assets/js/index.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/logout.js"></script>
+  <script src="assets/js/signIn.js"></script>
 </body>
 
 </html>

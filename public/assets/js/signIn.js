@@ -37,6 +37,8 @@ window.onload = (event) => {
       console.log('Logged in as: ' + user.displayName);
       const googleUserId = user.uid;
       setUpUI(user);
+      addUser(user);
+      
     } else {
         setUpUI();
       // If not logged in, navigate back to login page.
@@ -45,3 +47,27 @@ window.onload = (event) => {
   });
 };
 
+const addUser = user => {
+    let found;
+    console.log("addUser method called")
+    const notesRef2 = firebase.database().ref(`users/`);
+    notesRef2.on("value", snapshot => {
+        console.log("notesref in users called")
+        const data2 = snapshot.val();
+        for (const noteItem in data2) {
+            console.log("started");
+            const note = data2[noteItem];
+            console.log(noteItem);
+            if (user.displayName === note.name) {
+                found = true;
+                console.log("found");
+            }
+        }
+        if (!found) {
+            firebase.database().ref(`users`).push({
+                name: user.displayName,
+                image: user.photoURL
+            })
+        }
+    });
+};

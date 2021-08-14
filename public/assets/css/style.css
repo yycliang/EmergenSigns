@@ -12,7 +12,9 @@ body {
   font-family: "Open Sans", sans-serif;
   color: #cac4c4;
 }
-
+#email{
+    color: darkgray;
+}
 a {
   color: #47b2e4;
   text-decoration: none;

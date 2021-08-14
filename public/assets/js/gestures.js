@@ -9,6 +9,7 @@ window.onload = (event) => {
       const googleUserId = user.uid;
       setUpUI(user);
       document.querySelector("#name").innerHTML = user.displayName;
+      console.log("name stuff")
       document.querySelector("#imagestuff").innerHTML= `<img alt="..." width="130" class="rounded mb-2 img-thumbnail" src=${user.photoURL}></img>`
     //   document.querySelector("#userDropdown").innerHTML+=`<img class="img-profile rounded-circle" src="${user.photoURL}">`;
     //   document.querySelector("#dash").innerHTML+=`<img class="img-radius" alt="User-Profile-Image" src="${user.photoURL}">`;

@@ -51,10 +51,15 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-            <li><a class="nav-link scrollto" href="index.html">Home</a></li>
-            <li><a class="nav-link scrollto active" href="login.html">Sign Up</a></li>
-            <li><a class="nav-link scrollto" href="gestures.html">Gestures List</a></li>
-        </ul>
+                <li class = "logged-in"><a class="nav-link scrollto active" href="index.html">Home</a></li>
+                <li class = "logged-out"><a class="nav-link scrollto active" href="index.html">Home</a></li>
+                <li class = "logged-out"><a class="nav-link scrollto" href="login.html">Sign Up</a></li>
+                <li class = "logged-out"><a class="nav-link scrollto" href="gestures.html">Gestures List</a></li>
+                <li class = "logged-in"><a class="nav-link scrollto" href="gestures.html">Gestures List</a></li>
+                <li class = "logged-in"><a class="nav-link scrollto" href="profile.html">Profile</a></li>
+                <li class = "logged-in"><a class="nav-link scrollto" href="learning.html">Learning</a></li>
+                <li class = "logged-in"><a class="nav-link scrollto" href = "index.html" onclick="logout()">Log Out</a></li>
+            </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
@@ -198,7 +203,7 @@
 
   <script src="assets/js/index.js"></script>
   <script src="assets/js/main.js"></script>
-  
+  <script src="assets/js/logout.js"></script>
   <script src="assets/js/signIn.js"></script>
 </body>
 

@@ -1,16 +1,16 @@
 const titleTag = document.querySelector("#gesture-page-title");
-const titleReplace = document.querySelector("#letter-title");
-const imgReplace = document.querySelector("#letter-image");
+const titleReplace = document.querySelector("#emer-title");
+const imgReplace = document.querySelector("#emer-image");
 
 const urlParams = new URLSearchParams(window.location.search);
 const gestureId = urlParams.get('gestureId');
 
 function fetchDataFromTopicID() {
     if (gestureId) {
-        const topicsRef = firebase.database().ref(`gestures/${gestureId}`);
+        const topicsRef = firebase.database().ref(`gestures2/${gestureId}`);
         topicsRef.on('value', (snapshot) => {
             const data = snapshot.val();
-            titleReplace.innerHTML = "Letter: " + data.title;
+            titleReplace.innerHTML = "Sign: " + data.title;
             imgReplace.innerHTML+= `<img src=${data.src} class="img-fluid" alt=""></img>`
             // renderModules(data.modules)
             

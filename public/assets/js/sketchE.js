@@ -6,8 +6,8 @@
 let video;
 let classifier;
 let label = 'waiting...';
-let imageModelURL = 'https://teachablemachine.withgoogle.com/models/_8wOFtP0j/';
-let dataBob;
+let imageModelURL = 'https://teachablemachine.withgoogle.com/models/sxu_578iI/';
+let dataJoe;
 let time = 1000;
 
 // STEP 1: Load the model!
@@ -15,25 +15,25 @@ function preload() {
   classifier = ml5.imageClassifier(imageModelURL + 'model.json');
   
 }
-const urlParams2 = new URLSearchParams(window.location.search);
-const gestureId2 = urlParams2.get('gestureId');
+const urlParams3 = new URLSearchParams(window.location.search);
+const gestureId3 = urlParams3.get('gestureId');
 
-function fetchBobFromTopicID() {
-    if (gestureId2) {
-        const topicsRef = firebase.database().ref(`gestures/${gestureId2}`);
+function fetchJoeFromTopicID() {
+    if (gestureId3) {
+        const topicsRef = firebase.database().ref(`gestures2/${gestureId3}`);
         topicsRef.on('value', (snapshot) => {
-            dataBob = snapshot.val();
+            dataJoe = snapshot.val();
             
         });
     }
 }
 window.addEventListener("DOMContentLoaded", function (ev) {
     console.log("DOMContentLoaded event");
-    fetchBobFromTopicID()
+    fetchJoeFromTopicID()
 });
 function setup() {
   let canvas = createCanvas(575, 430);
-  canvas.parent('sketch-container');
+  canvas.parent('sketch-container2');
   // Create the video
   video = createCapture(VIDEO);
   video.hide();
@@ -69,10 +69,10 @@ function gotResults(error, results) {
     console.error(error);
     return;
   }
-  if (results[0].label == dataBob.title.toLowerCase()){
-    const completeButton = document.getElementById("completeLetter");
+  if (results[0].label == dataJoe.title.toLowerCase()){
+    const completeButton = document.getElementById("completeEmer");
     label = '✅';
-    completeButton.innerHTML = `<a class="btn btn-primary" id="${gestureId2}" onClick="saveTopic()">FINISH!</a>`;
+    completeButton.innerHTML = `<a class="btn btn-primary" id="${gestureId3}" onClick="saveTopic()">FINISH!</a>`;
   }
   classifyVideo();
   

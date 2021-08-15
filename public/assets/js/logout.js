@@ -1,3 +1,4 @@
+
 window.onload = (event) => {
     console.log("window loaded")
     // Use this to retain user state between html pages.
@@ -23,9 +24,11 @@ window.onload = (event) => {
   
     //beginning of loading letter gestures 
     const getGestures = userId => {
-        // console.log("Getnotes called" + userId)
+        
+        console.log("Getnotes called" + userId)
         const notesRef = firebase.database().ref(`gestures/`);
         notesRef.on("value", snapshot => {
+            
             const data = snapshot.val();
             databob = data;
             // console.log("notesref for topics called");

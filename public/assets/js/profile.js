@@ -116,3 +116,16 @@ function showstuff2(useriddd){
         
     });
 }
+
+editButton.addEventListener("click", function() {
+  console.log("edit button is being clicked")
+  about.readOnly = false;
+  about.style.backgroundColor = "#dddbdb";
+} );
+
+saveButton.addEventListener("click", function() {
+  console.log("save button is being clicked")
+  about.readOnly = true;
+  about.style.backgroundColor = "white";
+  const input = document.querySelector("#about").value;
+} )

@@ -53,6 +53,9 @@
         .filter-active{
             border: 1px;
         }
+        .img-fluid {
+            height: 150px !important;
+        }
   </style>
 </head>
 
@@ -70,13 +73,9 @@
         <ul>
                 <li class = "logged-in"><a class="nav-link scrollto" href="index.html">Home</a></li>
                 <li class = "logged-out"><a class="nav-link scrollto" href="index.html">Home</a></li>
-                <li class = "logged-out"><a class="nav-link scrollto" href="gestures.html">Signs</a></li>
-                <li class = "logged-in"><a class="nav-link scrollto" href="gestures.html">Signs</a></li>
+                <li class = "logged-in"><a class="nav-link scrollto active" href="gestures.html">Signs</a></li>
                 <li class = "logged-out"><a class="nav-link scrollto" href="login.html">Login</a></li>
-                <!-- <li class = "logged-out"><a class="nav-link scrollto active" href="gestures.html">Gestures List</a></li> -->
-                <li class = "logged-in"><a class="nav-link scrollto active" href="gestures.html">Gestures List</a></li>
                 <li class = "logged-in"><a class="nav-link scrollto" href="profile.html">Profile</a></li>
-                <!-- <li class = "logged-in"><a class="nav-link scrollto" href="learning.html">Learning</a></li> -->
                 <li class = "logged-in"><a class="nav-link scrollto" href = "index.html" onclick="logout()">Log Out</a></li>
         </ul>    
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -109,8 +108,7 @@
         </div>
 
         <div class="row portfolio-container" id="letterGestures"></div>
-        <div class="row portfolio-container" id="emergencyGestures">
-        </div>
+        <div class="row portfolio-container" id="emergencyGestures"></div>
       </div>
     </section><!-- End Portfolio Section -->
 

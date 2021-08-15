@@ -2,6 +2,12 @@
 <html lang="en">
 
 <head>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.sound.min.js"></script>
+  <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js" type="text/javascript"></script>
+  <meta charset="utf-8" />
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -24,7 +30,7 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-    <script defer src="/__/firebase/8.3.1/firebase.js"></script>
+<script defer src="/__/firebase/8.3.1/firebase.js"></script>
    <!-- include only the Firebase features as you need -->
    <script defer src="/__/firebase/8.3.1/firebase-database.js"></script>
    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
@@ -38,19 +44,10 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  <style>
-      .portfolio .portfolio-item .portfolio-info{
-            position: relative !important;
-            left: 0px !important;
-      }
-      .show {
-        display: block;
-        }
-  </style>
 </head>
 
 <body>
-
+<script src="assets/js/sketchE.js"></script>
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top header-inner-pages">
     <div class="container d-flex align-items-center">
@@ -60,7 +57,7 @@
       <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
       <nav id="navbar" class="navbar">
-        <ul>
+            <ul>
                 <li class = "logged-in"><a class="nav-link scrollto" href="index.html">Home</a></li>
                 <li class = "logged-out"><a class="nav-link scrollto" href="index.html">Home</a></li>
                 <li class = "logged-out"><a class="nav-link scrollto" href="gestures.html">Signs</a></li>
@@ -69,7 +66,7 @@
                 <li class = "logged-in"><a class="nav-link scrollto" href="profile.html">Profile</a></li>
                 <li class = "logged-in"><a class="nav-link scrollto active" href="learning.html">Learning</a></li>
                 <li class = "logged-in"><a class="nav-link scrollto" href = "index.html" onclick="logout()">Log Out</a></li>
-        </ul>    
+            </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
@@ -78,68 +75,103 @@
 
   <main id="main">
 
-    <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
-      <div class="container">
+    <section class="inner-page">
+        <section id="team" class="team section-bg">
+        <div class="container">
 
-      </div>
-    </section><!-- End Breadcrumbs -->
+            <div class="section-title">
+            <h2>Learning Page</h2>
+            <div id="completeEmer">
+            </div>
+            </div>
 
-     <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio">
-      <div class="container">
+            <div class="row">
 
-        <div class="section-title">
-          <h2>SIGNS</h2>
-          <p>CLICK ON A SIGN BELOW TO LEARN AND MASTER IT</p>
-        </div>
-
-        <ul id="portfolio-flters" class="d-flex justify-content-center">
-          <li onclick="filterSelection('all')" class="filter-active btn">All</li>
-          <li onclick="filterSelection('alphabet')" class="btn" >Alphabet</li>
-          <li onclick="filterSelection('emergency')" class="btn" >Emergency</li>
-        </ul>
-
-        <div class="row portfolio-container" id="letterGestures">        
-        </div>
-
-        <!-- <div class="row portfolio-container" id="emergencyGestures">
-          <div class="col-lg-4 col-md-6 portfolio-item emergency">
-            <a href="learning.html" class="details-link">
-                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/gpNDuOwyW7Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <div class="portfolio-info">
-                    <h4>Emergency Sign: Yes</h4>
+            <div class="col-lg-6">
+                <div class="member d-flex align-items-start">
+                <div class="pic" id = "emer-image"></div>
+                <div class="member-info">
+                    <h4 id = "emer-title"></h4>
+                    <p>INSTRUCTIONS:</p>
+                    <p>ALLOW access to camera.</p>
+                    <p>MIMIC the gesture on the left and MASTER the EmergenSign!</p>
+                    <p>MAKE SURE to show the sign CLOSE to the camera.</p>
                 </div>
-            </a>
-          </div>
-        </div> -->
+                </div>
+            </div>
 
-      </div>
-    </section><!-- End Portfolio Section -->
+            <div class="col-lg-6 mt-4 mt-lg-0">                
+                <div class="member d-flex justify-content-center">
+                <div id="sketch-container2"></div>
+                </div>
 
+            </div>
+            </div>
+
+        </div>
+        </section><!-- End Team Section -->
+    </section>
   </main><!-- End #main -->
 
+  <!-- ======= Footer ======= -->
   <footer id="footer">
+
     <div class="footer-top">
       <div class="container">
         <div class="row">
-          <div class="col-lg-6 col-md-6 footer-contact">
-            <h3>EmergenSigns</h3>
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>Arsha</h3>
+            <p>
+              A108 Adam Street <br>
+              New York, NY 535022<br>
+              United States <br><br>
+              <strong>Phone:</strong> +1 5589 55488 55<br>
+              <strong>Email:</strong> info@example.com<br>
+            </p>
           </div>
-          <div class="col-lg-6 col-md-6 footer-links">
+
+          <div class="col-lg-3 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="index.html">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="gestures.html">Gestures</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
             </ul>
           </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Social Networks</h4>
+            <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
+            <div class="social-links mt-3">
+              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
 
     <div class="container footer-bottom clearfix">
       <div class="copyright">
-        &copy; Copyright <strong><span>EmergenSigns</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>Arsha</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
@@ -164,9 +196,11 @@
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
 
   <!-- Template Main JS File -->
-  <script src="assets/js/gestures.js"></script>
+  <script src="assets/js/index.js"></script>
+  <script src="assets/js/viewGesture.js"></script>
   <script src="assets/js/main.js"></script>
-  <script src="assets/js/logout.js"></script>
+<script src="assets/js/logout.js"></script>
+<script src="assets/js/sketch.js"></script>
 </body>
 
 </html>

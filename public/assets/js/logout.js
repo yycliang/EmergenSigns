@@ -65,7 +65,7 @@ window.onload = (event) => {
                             <h4>Letter: ${note.title}</h4>
                         </div>
                     </a>
-                </div>;`
+                </div>`
     };
 };
 

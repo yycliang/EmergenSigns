@@ -20,15 +20,14 @@ window.onload = (event) => {
         };
     });
   
-    //beginning of loading gestures 
+    //beginning of loading letter gestures 
     const getGestures = userId => {
-        console.log("Getnotes called" + userId)
+        // console.log("Getnotes called" + userId)
         const notesRef = firebase.database().ref(`gestures/`);
         notesRef.on("value", snapshot => {
             const data = snapshot.val();
             databob = data;
-            // console.log(data);
-            console.log("notesref for topics called");
+            // console.log("notesref for topics called");
             renderDataAsHtml(data);
         });
     };
@@ -38,25 +37,11 @@ window.onload = (event) => {
             const note = data[noteItem];
             // console.log(note.title)
             cards += createCard(noteItem, note);
+            // console.log(cards);
         }
         document.querySelector("#letterGestures").innerHTML = cards;
     };
-    // const createCard = (noteId, note) => {
-    //     return `<div class="view-topics-card">
-    //      <a class="card shadow mb-4" href="viewTopic.html?topicId=${noteId}">
-    //         <div class="card-header py-3">
-    //             <h6 class="m-0 font-weight-bold" id="topicTitle">${note.title}</h6>
-    //         </div>
-    //         <div class="card-body">
-    //             <p>${note.title}</p>
-    //             <img class= card-img-top src=${note.src}>
-                
-    //         </div>
-            
-    //     </a>
-    //     <a class="btn btn-primary"  id="${noteId}" onClick="saveTopic(this)" >Save topic</a>
-    //         </div>;`
-    // };
+
     const createCard = (noteId, note) => {
         return `<div class="col-lg-3 col-md-6 portfolio-item alphabet">
                     <a href="learning.html?gestureId=${noteId}" class="details-link">
@@ -66,6 +51,39 @@ window.onload = (event) => {
                         </div>
                     </a>
                 </div>`
+    };
+
+    //beginnning of emergency gestures
+    const getGestures2 = userId => {
+        console.log("TESTING EMERGENCY" + userId)
+        const notesRef2 = firebase.database().ref(`gestures2/`);
+        notesRef2.on("value", snapshot => {
+            const data2 = snapshot.val();
+            databob2 = data2;
+            console.log("notesref for topics called");
+            renderDataAsHtml(data2);
+        });
+    };
+    const renderDataAsHtml2 = data2 => {
+        let cards2 = "";
+        for (const noteItem in data2) {
+            const note = data2[noteItem];
+            cards2 += createCard2(noteItem, note);
+            console.log(cards2);
+        }
+        document.querySelector("#emergencyGestures").innerHTML = cards2;
+    };
+
+    const createCard2 = (noteId, note) => {
+        console.log(note.title)
+        return `<div class="col-lg-4 col-md-6 portfolio-item emergency">
+            <a href="learning.html" class="details-link">
+                <iframe width="100%" height="100%" src="${note.src}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="portfolio-info">
+                    <h4>Emergency Sign: ${note.title}</h4>
+                </div>
+            </a>
+          </div>`
     };
 };
 
@@ -78,3 +96,48 @@ const logout = () =>{
     // An error happened.
     });
 };
+
+
+//the bottom is the filter 
+    filterSelection("all")
+    function filterSelection(c) {
+    var x, i;
+    x = document.getElementsByClassName("portfolio-item");
+    if (c == "all") c = "";
+    for (i = 0; i < x.length; i++) {
+        w3AddClass(x[i], "noshow");
+        if (x[i].className.indexOf(c) > -1) w3RemoveClass(x[i], "noshow");
+    }
+    }
+
+    function w3AddClass(element, name) {
+    var i, arr1, arr2;
+    arr1 = element.className.split(" ");
+    arr2 = name.split(" ");
+    for (i = 0; i < arr2.length; i++) {
+        if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+    }
+    }
+
+    function w3RemoveClass(element, name) {
+    var i, arr1, arr2;
+    arr1 = element.className.split(" ");
+    arr2 = name.split(" ");
+    for (i = 0; i < arr2.length; i++) {
+        while (arr1.indexOf(arr2[i]) > -1) {
+        arr1.splice(arr1.indexOf(arr2[i]), 1);     
+        }
+    }
+    element.className = arr1.join(" ");
+    }
+
+    // Add active class to the current button (highlight it)
+    var btnContainer = document.getElementById("portfolio-flters");
+    var btns = btnContainer.getElementsByClassName("btn");
+    for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", function(){
+        var current = document.getElementsByClassName("filter-active");
+        current[0].className = current[0].className.replace(" filter-active", "");
+        this.className += " filter-active";
+    });
+    }

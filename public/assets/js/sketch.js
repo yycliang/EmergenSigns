@@ -72,9 +72,44 @@ function gotResults(error, results) {
   if (results[0].label == dataBob.title.toLowerCase()){
     const completeButton = document.getElementById("completeLetter");
     label = '✅';
-    completeButton.innerHTML = `<a class="btn btn-primary" id="${gestureId2}" onClick="saveTopic()">FINISH!</a>`;
+    completeButton.innerHTML = `<a class="btn btn-primary" id=${gestureId2} href = "profile.html" onclick=saveTopic(this)>FINISH!</a>`;
+  } else {
+    classifyVideo();
   }
-  classifyVideo();
   
   
+}
+
+function saveTopic(btn) {
+    var useriddd;
+    console.log("savetopics method called")
+    const notesRef3 = firebase.database().ref(`users/`);
+    notesRef3.on("value", snapshot => {
+        const data4 = snapshot.val();
+        for (const noteItem in data4) {
+            const note = data4[noteItem];
+            console.log("note item" + note.name);
+            
+            if (document.querySelector("#name").innerHTML === note.name) {
+                useriddd = noteItem;
+                console.log("user found: " + noteItem);
+            }
+        }
+    });
+
+    console.log("hello" +useriddd)
+    const notesRef2 = firebase.database().ref(`gestures/`);
+
+    notesRef2.on("value", snapshot => {
+        console.log("savetopics value called")
+        const data2 = snapshot.val();
+        const note = data2[btn.id];
+        console.log(btn.id)
+        console.log(note)
+        console.log("bob" + useriddd);
+        firebase.database().ref(`users/${useriddd}/completedGestures`).push({
+            name: note.name,
+            image: note.src
+        })
+    });
 }
